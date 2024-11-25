@@ -9,6 +9,7 @@
                     <nav-bar-link
                         v-for="(page, index) in publishedPages"          class="nav-item" :key="index"
                         :page="page"
+                        :index="index"
                         :isActive="activePage == index"
                         @activated="$emit(activated)"
                     >
@@ -41,7 +42,7 @@ export default {
     created() {
         this.getThemeSetting();
     },
-            props: ['pages', 'activePage', 'navLinkClick'],
+            props: ['pages', 'activePage'],
             template: `
                 
             `,
