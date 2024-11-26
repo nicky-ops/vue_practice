@@ -8,6 +8,7 @@
 <script>
 /* eslint-disable */
 export default {
+    inject: ['$pages'],
    created() {
         const pageData = this.$pages.getSinglePage(this.$route.params.index);
         this.page = pageData;
