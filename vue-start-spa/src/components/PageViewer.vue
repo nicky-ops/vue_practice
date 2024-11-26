@@ -6,10 +6,15 @@
 </template>
 
 <script>
+/* eslint-disable */
 export default {
    created() {
         const pageData = this.$pages.getSinglePage(this.$route.params.index);
         this.page = pageData;
+
+        this.$watch(() => this.$route.params, (newParams, prevParams) => {
+            this.page = this.$pages.getSinglePage(newParams.index);
+        });
    },
     data() {
         return {
