@@ -40,7 +40,7 @@ export default {
     components: {
         NavBarLink
     },
-    inject: ['$pages'],
+    inject: ['$pages', '$bus'],
     computed: {
         publishedPages() {
             return this.pages.filter(p => p.published);
@@ -48,7 +48,12 @@ export default {
     },
     created() {
         this.getThemeSetting();
+        
         this.pages = this.$pages.getAllPages();
+
+        this.$bus.$on('page-updated', () => {
+            this.pages = [...this.$pages.getAllPages()];
+        });
     },
     data() {
         return {
