@@ -57,6 +57,10 @@
                             class="btn btn-secondary"
                             @click.prevent="goToPagesList"
                         >Cancel</button>
+                        <button
+                            class="btn btn-danger"
+                            @click.prevent="deletePage"
+                        >Delete</button>
                     </div>
                 </div>
             </div>
@@ -83,6 +87,14 @@ function submit() {
         index,
         page
     });
+
+    goToPagesList();
+}
+
+function deletePage() {
+    pages.removePage(index);
+
+    bus.$emit('page-deleted', {index});
 
     goToPagesList();
 }
